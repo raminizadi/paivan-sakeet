@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light"><meta name="theme-color" content="#f8f5ec">
+<title>Päivän säkeet · Heikki Pursiaisen runoja</title>
+<style>
+:root{--paper:#f8f5ec;--ink:#25271f;--red:#84382a;--dim:#626050;--rule:#c4bdab;--sans:"Segoe UI",Arial,sans-serif;--serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif)}
+button,input,select{font:inherit}button,a,input,select{touch-action:manipulation}a{color:var(--red);text-underline-offset:.19em}button{color:inherit;cursor:pointer}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #9e542f;outline-offset:4px}
+.shell{width:min(1152px,90%);margin:auto}
+header{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--ink);padding:20px 0 16px;gap:12px}
+.brand{font-size:20px;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px}.brand b{font-weight:500}.mark{font-size:30px;line-height:1;color:var(--red);font-family:Georgia,serif}
+.topnav{display:flex;align-items:center;gap:24px}.topnav a,.topnav button{border:0;background:none;color:var(--ink);text-decoration:none;font:13px var(--sans);padding:7px 0}.topnav :hover{text-decoration:underline}
+.mast{display:grid;grid-template-columns:1.75fr 1fr;align-items:end;gap:36px;padding:55px 0 37px;border-bottom:1px solid var(--ink)}
+.mast h1{font-weight:400;font-size:clamp(62px,7.5vw,115px);line-height:.96;margin:0;letter-spacing:-.070em}.mast h1 em{color:var(--red);font-weight:400}
+.mast p{margin:8px 0 0;font:clamp(18px,2vw,25px)/1.2 var(--serif)}.mast p span{display:block;font:12px/1.55 var(--sans);color:var(--dim);margin-top:9px}
+#reader{min-height:100vh;min-height:100svh}
+.spread{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);padding:36px 0 32px;align-items:start}
+.context{padding:8px 52px 16px 0;max-width:510px}.eyebrow{font:600 11px/1.5 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin:0 0 17px}
+h2{margin:0;font-weight:400;letter-spacing:-.045em;line-height:1.04}.context h2{font-size:clamp(32px,4vw,62px);overflow-wrap:anywhere;hyphens:auto}
+#preface{font:clamp(18px,1.75vw,23px)/1.49 var(--serif);margin:25px 0 18px}
+.reading-head{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px 12px;margin:0 0 18px}.reading-head .eyebrow{margin:0}.random{flex:none;color:var(--red)}.sources:empty{display:none}
+.sources{display:flex;flex-direction:column;align-items:flex-start;gap:9px;margin-bottom:24px}.sources a,.origin,.small{font:13px/1.5 var(--sans)}
+.poem{border-left:1px solid var(--rule);padding:8px 0 10px clamp(26px,4vw,65px);min-height:330px;min-width:0}
+.poem-controls{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;border-bottom:1px solid var(--rule);margin:0;padding:4px 0}.poem-controls button{min-height:44px;white-space:nowrap;background:transparent;border:0;padding:10px 2px;font:14px/1.5 var(--sans)}.poem-controls button:first-child{justify-self:start}.poem-controls button:last-child{justify-self:end}.poem-controls button:hover{text-decoration:underline}.poem-controls button:disabled{color:#968f80;cursor:default}.poem-controls .random{color:var(--red)}.reader-folio{margin:0;border-left:1px solid var(--rule);padding-left:12px;font:12px/1.5 var(--sans);color:var(--dim)}.page-return{display:inline-block;margin:28px 0 0;font:14px var(--sans)}.page-section{min-height:65vh}body[data-view="contents"] #contents,body[data-view="about"] #about{border-top:0;padding-top:30px}#about h2{margin-bottom:24px}
+blockquote{margin:0 0 25px;white-space:pre-line;font:italic clamp(25px,2.8vw,40px)/1.28 var(--serif);letter-spacing:-.025em;overflow-wrap:anywhere}
+#embedHost{width:100%;max-width:550px}#embedHost iframe{max-width:100%}
+.origin{display:inline-block;margin-top:9px}
+#contents{padding:52px 0 48px;scroll-margin-top:18px}#contents h2,#about h2{font-size:clamp(34px,4.4vw,58px)}.toolbar{display:flex;gap:18px;align-items:end;margin:22px 0 16px}.toolbar label{display:block;font:13px var(--sans);color:var(--dim)}.toolbar label:first-child{flex:1}.toolbar input,.toolbar select{display:block;width:100%;border:1px solid var(--rule);border-radius:0;background:#fcfaf4;color:var(--ink);padding:10px 12px;margin-top:6px;font:15px var(--sans)}.toolbar select{min-width:135px}
+.context-filter{display:flex;align-items:center;gap:8px;min-height:32px;font:13px var(--sans);color:var(--dim);width:fit-content;cursor:pointer}.context-filter input{margin:0;accent-color:var(--red)}
+#resultCount{font:13px var(--sans);color:var(--dim);margin:10px 0 8px}.items{padding:0;list-style:none;margin:0;display:grid;grid-template-columns:1fr 1fr;column-gap:34px}.items li{border-bottom:1px solid var(--rule)}.items a{display:flex;align-items:baseline;justify-content:space-between;gap:10px;text-decoration:none;color:var(--ink);padding:10px 0;font-size:18px}.items a:hover,.items .active{color:var(--red)}.items time{font:12px var(--sans);color:var(--dim);flex:none}.more{display:block;margin:18px auto 0;border:1px solid var(--rule);background:transparent;padding:9px 20px;font:14px var(--sans)}[hidden]{display:none!important}
+#about{border-top:3px double var(--ink);padding:32px 0 45px}#about summary{cursor:pointer;font-size:24px}#about p{max-width:70ch;font-size:17px;line-height:1.6}#about .updated{margin-top:28px;font:12px/1.5 var(--sans);color:var(--dim)}
+@media(max-width:730px){.shell{width:91%}.mast{padding:32px 0 22px;grid-template-columns:1fr;gap:10px}.mast h1{font-size:clamp(57px,13vw,87px)}.mast p{font-size:19px}.mast p span{margin-top:4px}.topnav{gap:14px}.spread{grid-template-columns:1fr;padding:25px 0}.context{max-width:none;padding:0}.context h2{font-size:clamp(34px,8vw,43px)}#preface{margin:15px 0}.eyebrow{margin-bottom:10px}.sources{margin-bottom:18px}.poem{border-left:none;border-top:1px solid var(--rule);padding:20px 0 0;min-height:0}.items{display:block}#contents{padding:35px 0}.toolbar{gap:10px}.toolbar select{min-width:96px}header{padding:13px 0}.brand{font-size:16px;gap:5px}.mark{font-size:23px}.topnav a{font-size:12px}}
+@media(max-width:730px){#reader{padding-top:12px}.poem-controls{padding:2px 0}.poem-controls button{font-size:13px}}
+@media(max-width:400px){.poem-controls button{font-size:12px;padding-inline:0}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+@media(max-width:730px){.context{padding-bottom:18px}.sources{margin-bottom:0}}
+</style>
+</head>
+<body data-default-page="__PAGE__" data-base="__BASE__"><div class="shell">
+<header><a href="__BASE__" data-view="reader" class="brand"><span aria-hidden="true" class="mark">❦</span><b>Päivän säkeet</b></a><nav class="topnav" aria-label="Päävalikko"><a href="__BASE__sisallys/" data-view="contents">Sisällys</a><a href="__BASE__kokoelmasta/" data-view="about">Kokoelmasta</a></nav></header>
+<main><section class="mast" id="alku"><h1>Päivän <em>säkeet</em></h1><p>Heikki Pursiaisen runoja Twitteristä ja X:stä<span>__STATS__</span></p></section>
+<div id="reader"><nav class="poem-controls" aria-label="Selaa runoja"><button id="prev" type="button" aria-label="Edellinen runo">← Edellinen</button><button type="button" class="random" id="random">Satunnainen runo</button><button id="next" type="button" aria-label="Seuraava runo">Seuraava →</button></nav><article class="spread" aria-labelledby="poemTitle"><div class="context"><div class="reading-head"><p class="eyebrow" id="date"></p><p class="reader-folio" id="folio" aria-label="Runon paikka kokoelmassa"></p></div><h2 id="poemTitle" tabindex="-1"></h2><p id="preface"></p><div class="sources" id="sources"></div></div>
+<div class="poem"><div id="preview"><blockquote id="excerpt"></blockquote></div><div id="embedHost"></div><a class="origin" id="original" target="_blank" rel="noopener noreferrer">Lue alkuperäinen julkaisu X:ssä ↗</a></div></article></div>
+
+<a class="page-return" id="readerReturn" href="__BASE__" data-view="reader">← Takaisin runoon</a><section id="contents" class="page-section" hidden><h2>Sisällys</h2><div class="toolbar"><label>Hae kokoelmasta<input type="search" id="search" placeholder="Säe, aihe tai nimi" autocomplete="off"></label><label>Vuosi<select id="year"><option value="">Kaikki</option></select></label></div><label class="context-filter"><input type="checkbox" id="contextOnly">Vain taustoitetut</label><p id="resultCount" role="status"></p><ol class="items" id="items"></ol><button class="more" id="more" type="button">Näytä lisää runoja</button></section>
+<section id="about" class="page-section" hidden><h2>Kokoelmasta</h2><p>Päivän säkeet kokoaa __POEM_COUNT__ Heikki Pursiaisen runoa vuosilta __YEAR_RANGE__. Runojen otsikot on toimitettu tätä kokoelmaa varten. Esipuheet kertovat, mihin uutiseen, puheenvuoroon tai keskusteluun runo liittyy.</p><p>Kokoamisen lähtökohtana oli noin 9 600 Internet Archiven tallentamaa julkaisulinkkiä. Astra 6.1 etsi runoja ja jäljitti niiden taustoja. Usein vihje löytyi viimeisestä säkeestä. Sen avulla etsittiin yhteyksiä aikalaisuutisiin, runon vastausketjuun ja Pursiaisen muihin julkaisuihin. Lähteistetty esipuhe löytyi näin __PREFACE_COUNT__ runolle. Jos yhteydelle ei löytynyt riittävää näyttöä, esipuhe jätettiin pois.</p><p>Toteuttanut Ramin Izadi x Astra 6.1</p></section></main>
+</div>
+<script id="poems" type="application/json">__POEMS__</script>
+<script>
+'use strict';
+const poems=JSON.parse(document.getElementById('poems').textContent);
+const byId=new Map(poems.map((r,i)=>[r.id,i]));
+const el=id=>document.getElementById(id);
+const formatDate=s=>new Intl.DateTimeFormat('fi-FI',{day:'numeric',month:'numeric',year:'numeric',timeZone:'UTC'}).format(new Date(s+'T12:00:00Z'));
+const strip=s=>s.toLocaleLowerCase('fi').trim();
+const initial=poems[0].id;
+let current=-1,shown=24,matched=[],widgetReady;
+const baseURL=new URL(document.body.dataset.base,location.href);
+const fileMode=location.protocol==='file:';
+const storageKey='paivan-sakeet-reader';
+let saved={};try{saved=JSON.parse(sessionStorage.getItem(storageKey)||'{}')}catch{}
+let readerId=initial;
+function remember(){try{sessionStorage.setItem(storageKey,JSON.stringify({id:readerId,search:el('search').value,year:el('year').value,contextOnly:el('contextOnly').checked,shown}))}catch{}}
+function viewURL(view,id=readerId){
+ if(fileMode)return view==='reader'?'#r-'+id:view==='about'?'#about':'#contents';
+ return new URL(view==='reader'?'#r-'+id:view==='about'?'kokoelmasta/':'sisallys/',baseURL).href;
+}
+function updateLinks(){for(const a of document.querySelectorAll('a[data-view]'))a.href=viewURL(a.dataset.view)}
+function savePosition(){history.replaceState({...history.state,scrollY:window.scrollY,scrollURL:location.href},'')}
+function navigate(view,id=readerId){savePosition();history.pushState({readerId:id},'',viewURL(view,id));route(true)}
+function scrollReader(userInitiated=false){
+ if(userInitiated&&!window.matchMedia('(max-width:730px)').matches)window.scrollTo(0,0);
+ else el('reader').scrollIntoView();
+}
+
+function getWidgets(){
+ if(!widgetReady){widgetReady=new Promise((resolve,reject)=>{
+  if(window.twttr?.widgets){resolve(window.twttr.widgets);return}
+  const script=document.createElement('script');script.src='https://platform.twitter.com/widgets.js';script.async=true;
+  script.onload=()=>window.twttr?.ready(api=>resolve(api.widgets));script.onerror=()=>reject(new Error('X'));document.head.append(script);
+ })}
+ return widgetReady;
+}
+function source(label,url){const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=label+' ↗';el('sources').append(a)}
+function render(id){
+ if(!byId.has(id))id=initial;
+ current=byId.get(id);readerId=id;remember();updateLinks();const p=poems[current];el('date').textContent=new Intl.DateTimeFormat('fi-FI',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(p.date+'T12:00:00Z'));
+ el('poemTitle').textContent=p.title;el('preface').textContent=p.preface;el('preface').hidden=!p.preface;el('sources').replaceChildren();
+ if(p.preface&&p.sourceUrl)source(p.sourceTitle||'Taustalähde',p.sourceUrl);
+ if(p.preface&&p.secondaryUrl)source(p.secondaryTitle,p.secondaryUrl);
+ if(p.crosspost&&p.crosspost!==p.sourceUrl)source(p.crossLabel||'Toinen julkaisu',p.crosspost);
+ el('original').href=p.url;el('original').hidden=false;el('excerpt').textContent=p.excerpt?p.excerpt+' […]':'';el('preview').hidden=!p.excerpt;
+ el('folio').textContent=(current+1)+' / '+poems.length;el('prev').disabled=current===0;el('next').disabled=current===poems.length-1;
+ const holder=document.createElement('div');el('embedHost').replaceChildren(holder);
+ getWidgets().then(w=>{if(holder.isConnected)return w.createTweet(p.id,holder,{conversation:'none',dnt:true,lang:'fi',align:'left',theme:'light'});}).then(frame=>{if(frame&&holder.isConnected){el('preview').hidden=true;el('original').hidden=true}}).catch(()=>{});
+ drawContents();
+}
+function openEntry(id){if(byId.has(id))navigate('reader',id)}
+function drawContents(){
+ const term=strip(el('search').value);const year=el('year').value;
+ matched=poems.filter(p=>(!el('contextOnly').checked||(p.preface?.trim()&&p.sourceUrl))&&(!year||p.date.startsWith(year))&&(!term||strip([p.title,p.preface,p.excerpt||'',p.date].join(' ')).includes(term)));
+ el('resultCount').textContent=matched.length+' '+(matched.length===1?'runo':'runoa');el('items').replaceChildren();
+ for(const p of matched.slice(0,shown)){
+  const li=document.createElement('li'),a=document.createElement('a'),t=document.createElement('time'),title=document.createElement('span');
+  a.href=viewURL('reader',p.id);title.textContent=p.title;t.dateTime=p.date;t.textContent=formatDate(p.date);a.append(title,t);
+  if(readerId===p.id){a.className='active';a.setAttribute('aria-current','page')}
+  a.addEventListener('click',e=>{if(e.button===0&&!e.ctrlKey&&!e.metaKey&&!e.shiftKey&&!e.altKey){e.preventDefault();openEntry(p.id)}});li.append(a);el('items').append(li);
+ }
+ el('more').hidden=shown>=matched.length;
+}
+for(const year of [...new Set(poems.map(p=>p.date.slice(0,4)))].sort().reverse()){el('year').add(new Option(year,year))}
+el('prev').onclick=()=>{if(current>0)openEntry(poems[current-1].id)};el('next').onclick=()=>{if(current<poems.length-1)openEntry(poems[current+1].id)};
+el('random').onclick=()=>{
+ if(poems.length<2)return;
+ const pick=Math.floor(Math.random()*(poems.length-1));
+ openEntry(poems[pick>=current?pick+1:pick].id);
+};
+el('more').onclick=()=>{const old=shown;shown+=60;drawContents();remember();el('items').children[old]?.querySelector('a')?.focus()};
+for(const name of ['search','year','contextOnly'])el(name).addEventListener('input',()=>{shown=24;drawContents();remember()});
+for(const a of document.querySelectorAll('a[data-view]'))a.addEventListener('click',e=>{if(e.button===0&&!e.ctrlKey&&!e.metaKey&&!e.shiftKey&&!e.altKey){e.preventDefault();navigate(a.dataset.view)}});
+if(saved.search)el('search').value=saved.search;
+if(saved.year)el('year').value=saved.year;
+el('contextOnly').checked=saved.contextOnly===true;
+if(Number.isInteger(saved.shown)&&saved.shown>=24)shown=saved.shown;
+let routeKey='',routeVersion=0;
+function route(focus=false,restore=false){
+ const hash=location.hash;
+ const view=hash==='#about'?'about':hash==='#contents'?'contents':hash.startsWith('#r-')||hash==='#alku'?'reader':/\/kokoelmasta\/(?:index\.html)?$/.test(location.pathname)?'about':/\/sisallys\/(?:index\.html)?$/.test(location.pathname)?'contents':document.body.dataset.defaultPage;
+ const id=hash.startsWith('#r-')&&byId.has(hash.slice(3))?hash.slice(3):byId.has(history.state?.readerId)?history.state.readerId:view!=='reader'&&byId.has(saved.id)?saved.id:readerId;
+ const key=location.href;
+ if(key===routeKey&&!focus&&!restore)return;
+ routeKey=key;
+ const version=++routeVersion;
+ const storedScroll=Number.isFinite(history.state?.scrollY)&&(!history.state.scrollURL||history.state.scrollURL===key)?history.state.scrollY:null;
+ document.body.dataset.view=view;
+ el('alku').hidden=view!=='reader';el('reader').hidden=view!=='reader';el('readerReturn').hidden=view==='reader';
+ el('contents').hidden=view!=='contents';el('about').hidden=view!=='about';
+ if(view!=='reader')readerId=id;
+ if(view==='reader'){history.replaceState({...history.state,readerId:id},'');if(current<0||readerId!==id)render(id);else drawContents()}else drawContents();
+ updateLinks();
+ document.title=view==='reader'?'Päivän säkeet · Heikki Pursiaisen runoja':(view==='about'?'Kokoelmasta':'Sisällys')+' · Päivän säkeet';
+ for(const a of document.querySelectorAll('.topnav a')){if(a.dataset.view===view)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')}
+ if(focus){if(view==='reader'){scrollReader(true);el('poemTitle').focus({preventScroll:true})}else{window.scrollTo(0,0);const heading=el(view).querySelector('h2');heading.tabIndex=-1;heading.focus({preventScroll:true})}savePosition()}
+ else requestAnimationFrame(()=>{if(version!==routeVersion)return;if(storedScroll!==null)window.scrollTo(0,storedScroll);else if(view==='reader'&&hash.startsWith('#r-')&&byId.has(hash.slice(3)))scrollReader();else window.scrollTo(0,0)});
+}
+if('scrollRestoration' in history)history.scrollRestoration='manual';
+route();window.addEventListener('popstate',()=>route(false,true));window.addEventListener('hashchange',()=>route());
+window.addEventListener('pagehide',()=>{savePosition();remember()});
+</script></body></html>
